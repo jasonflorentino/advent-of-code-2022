@@ -6,9 +6,16 @@ Doing this year's [Advent of code](https://adventofcode.com/2022). Just plain Ja
 
 The correct answers are in comments next to my solutions.
 
-## 🏃‍♂️ Run a solution
+## 👟 Run a solution
 
 ```bash
 # day 03
 node 03/solution.mjs
+```
+
+## 🌱 Setup a new day
+
+```bash
+# Create folder + files for day 05
+./newday.sh 05
 ```
