@@ -1,3 +1,4 @@
+// https://adventofcode.com/2022/day/1
 import { input } from "./input.mjs";
 import { fromLines, sum, insert } from "../util.mjs";
 

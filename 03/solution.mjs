@@ -1,3 +1,4 @@
+// https://adventofcode.com/2022/day/3
 import { input } from "./input.mjs";
 import { fromLines } from "../util.mjs";
 
@@ -17,7 +18,7 @@ console.log(
       }
     }
   }, 0)
-);
+); // 8139
 
 // part 2
 
@@ -28,12 +29,10 @@ console.log(
     }
     const elf1 = new Set(items.split(""));
     const common1and2 = elves[i + 1].split("").reduce((common, c) => {
-      if (elf1.has(c)) {
-        common.add(c);
-      }
+      if (elf1.has(c)) common.add(c);
       return common;
     }, new Set());
     const badgeCode = elves[i + 2].split("").find((c) => common1and2.has(c));
     return total + (Priorities.indexOf(badgeCode) + 1);
   }, 0)
-);
+); // 2668
