@@ -3,6 +3,8 @@ import { input } from "./input.mjs";
 import { fromLines, sum, insert } from "../util.mjs";
 
 // part 1
+// Find the Elf carrying the most Calories.
+// How many total Calories is that Elf carrying?
 
 let most = 0;
 let elfTotal = 0;
@@ -20,6 +22,8 @@ fromLines(input).forEach((numOrSpace) => {
 console.log(most); // 70296
 
 // part 2
+// Find the top three Elves carrying the most Calories.
+// How many Calories are those Elves carrying in total?
 
 let top3 = new Array(3).fill(0);
 let elfTotal2 = 0;
