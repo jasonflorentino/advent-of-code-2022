@@ -1,6 +1,6 @@
 # 🎄 Advent of Code 2022!
 
-Doing this year's [Advent of code](https://adventofcode.com/2022). Just plain Javascript because I'm lazy. Nothing wild or fancy. Except maybe writing in a stream of consciousness, running it, and then hoping to one-shot the answer. Exhilarating isn't it?
+Doing this year's [Advent of code](https://adventofcode.com/2022). Just plain Javascript because I'm lazy, and it's familiar. Nothing wild or fancy. Except maybe writing in one stream of consciousness, running it, and then hoping to one-shot the answer. Exhilarating isn't it?
 
 ## ⚠️ Spoiler Alert
 
