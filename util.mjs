@@ -16,3 +16,7 @@ export function sum(arr) {
 export function insert(el, arr, pos) {
   return [...arr.slice(0, pos), el, ...arr.slice(pos, arr.length - 1)];
 }
+
+export function getNumbers(arr) {
+  return arr.filter(Number).map(Number);
+}
