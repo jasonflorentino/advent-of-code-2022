@@ -21,28 +21,16 @@ console.log(
 
 function getResultPoints(opp, you) {
   if (isRock(opp)) {
-    if (isPaper(you)) {
-      return Points.WIN;
-    }
-    if (isScissors(you)) {
-      return Points.LOSE;
-    }
+    if (isPaper(you)) return Points.WIN;
+    if (isScissors(you)) return Points.LOSE;
   }
   if (isPaper(opp)) {
-    if (isRock(you)) {
-      return Points.LOSE;
-    }
-    if (isScissors(you)) {
-      return Points.WIN;
-    }
+    if (isRock(you)) return Points.LOSE;
+    if (isScissors(you)) return Points.WIN;
   }
   if (isScissors(opp)) {
-    if (isRock(you)) {
-      return Points.WIN;
-    }
-    if (isPaper(you)) {
-      return Points.LOSE;
-    }
+    if (isRock(you)) return Points.WIN;
+    if (isPaper(you)) return Points.LOSE;
   }
   return Points.DRAW;
 }
@@ -77,15 +65,9 @@ console.log(
 ); // 14184
 
 function getShapeForResult(opp, result) {
-  if (isDraw(result)) {
-    return opp;
-  }
-  if (isWin(result)) {
-    return getShapeToBeat(opp);
-  }
-  if (isLose(result)) {
-    return getShapeToLose(opp);
-  }
+  if (isDraw(result)) return opp;
+  if (isWin(result)) return getShapeToBeat(opp);
+  if (isLose(result)) return getShapeToLose(opp);
 }
 
 function isLose(c) {
@@ -101,25 +83,13 @@ function isWin(c) {
 }
 
 function getShapeToBeat(shape) {
-  if (isRock(shape)) {
-    return "Y";
-  }
-  if (isPaper(shape)) {
-    return "Z";
-  }
-  if (isScissors(shape)) {
-    return "X";
-  }
+  if (isRock(shape)) return "Y";
+  if (isPaper(shape)) return "Z";
+  if (isScissors(shape)) return "X";
 }
 
 function getShapeToLose(shape) {
-  if (isRock(shape)) {
-    return "Z";
-  }
-  if (isPaper(shape)) {
-    return "X";
-  }
-  if (isScissors(shape)) {
-    return "Y";
-  }
+  if (isRock(shape)) return "Z";
+  if (isPaper(shape)) return "X";
+  if (isScissors(shape)) return "Y";
 }

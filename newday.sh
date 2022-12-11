@@ -10,6 +10,7 @@ cd $1
 
 echo "export const input = \`\`;" > input.mjs
 echo "// https://adventofcode.com/2022/day/$1" > solution.mjs
+echo "// node $1/solution.mjs" >> solution.mjs
 cat ../solution.template.mjs >> solution.mjs
 
 cd ..

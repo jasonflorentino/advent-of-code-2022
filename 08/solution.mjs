@@ -7,6 +7,12 @@ const xLen = forest[0].length;
 const yLen = forest.length;
 
 // part 1
+// Consider your map;
+// how many trees are visible from outside the grid?
+
+// Look down each line of trees from the edge
+// and count how many would be visible by
+// keeping track of the highest yet seen.
 
 const visible = new Set();
 let highest = 0;
@@ -95,6 +101,10 @@ for (let y = yLen - 1; y >= 0; y--) {
 console.log(visible.size); // 1695
 
 // part 2
+// Consider each tree on your map.
+// What is the highest scenic score possible for any tree?
+
+// Comput the score for each tree, keep track of the best.
 
 let bestScore = 0;
 
@@ -111,6 +121,8 @@ function toScenicScore(a, b, c, d) {
   return a * b * c * d;
 }
 
+// Count in all 4 directions simultaneously
+// until view is blocked on all sides.
 function getViewingDistances(x, y, grid) {
   const mainHeight = Number(grid[y][x]);
   let offset = 1;

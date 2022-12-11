@@ -3,6 +3,8 @@ import { stack, moves } from "./input.mjs";
 import { fromLines, getNumbers } from "../util.mjs";
 
 // part 1
+// After the rearrangement procedure completes,
+// what crate ends up on top of each stack?
 
 // Represent each stack as an array of crates
 // where the lower the crate, the lower the idx
@@ -52,6 +54,8 @@ function doMoves(moves, stacks) {
 }
 
 // part 2
+// After the rearrangement procedure completes,
+// what crate ends up on top of each stack?
 
 const stacks2 = buildStacks(stack);
 
