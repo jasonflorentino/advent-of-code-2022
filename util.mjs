@@ -20,3 +20,7 @@ export function insert(el, arr, pos) {
 export function getNumbers(arr) {
   return arr.filter(Number).map(Number);
 }
+
+export function last(arr) {
+  return arr[arr.length - 1];
+}
