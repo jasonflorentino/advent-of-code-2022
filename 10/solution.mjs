@@ -11,11 +11,11 @@ import { fromLines } from "../util.mjs";
 // Render the image given by your program.
 // What eight capital letters appear on your CRT?
 
-console.log(main(example)); // pt1: 13140
-console.log(main(input)); // pt1: 14360 - pt2: BGKAEREZ
-
 const CRT_H = 6;
 const CRT_W = 40;
+
+console.log(main(example)); // pt1: 13140
+console.log(main(input)); // pt1: 14360 - pt2: BGKAEREZ
 
 function main(instructions) {
   // part 1
