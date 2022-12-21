@@ -6,6 +6,10 @@ export function fromLines(s) {
   return split(s, "\n");
 }
 
+export function words(str) {
+  return str.split(" ");
+}
+
 // Sum up numbers in an array
 export function sum(arr) {
   return arr.reduce((t, n) => t + n, 0);
@@ -23,4 +27,8 @@ export function getNumbers(arr) {
 
 export function last(arr) {
   return arr[arr.length - 1];
+}
+
+export function trim(str) {
+  return str.trim();
 }
