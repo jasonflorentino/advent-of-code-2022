@@ -15,9 +15,26 @@ class Monkey {
     this.itemsInspected = 0;
     this.operation = () => {};
   }
+  // Set up helpers
   befriend(monkey) {
     this.friends[monkey.name] = monkey;
   }
+  setOperation(A, operator, B) {
+    if (A !== "old") throw "wut";
+    if (operator === "*") {
+      this.operation = (old) => {
+        if (B === "old") return old * old;
+        else return old * Number(B);
+      };
+    }
+    if (operator === "+") {
+      this.operation = (old) => {
+        if (B === "old") return old + old;
+        else return old + Number(B);
+      };
+    }
+  }
+  // Monkey tasks
   doTurn(worryLevelVal) {
     while (this.items.length) {
       const item = this.items.shift();
@@ -29,7 +46,6 @@ class Monkey {
   inspect(item) {
     item.worry = this.operation(item.worry);
     this.itemsInspected += 1;
-    return item;
   }
   throw(item) {
     let toThrow;
@@ -37,28 +53,11 @@ class Monkey {
     else toThrow = this.falseThrow;
     this.friends[toThrow].catchItem(item);
   }
-  test(item) {
-    return item.worry % this.testVal === 0;
-  }
-  setOp(A, operator, B) {
-    if (A !== "old") throw "wut";
-    if (operator === "*") this.operation = this.makeMultiply(B);
-    if (operator === "+") this.operation = this.makeAdd(B);
-  }
-  makeMultiply(B) {
-    return (old) => {
-      if (B === "old") return old * old;
-      else return old * Number(B);
-    };
-  }
-  makeAdd(B) {
-    return (old) => {
-      if (B === "old") return old + old;
-      else return old + Number(B);
-    };
-  }
   catchItem(item) {
     this.items.push(item);
+  }
+  test(item) {
+    return item.worry % this.testVal === 0;
   }
 }
 
@@ -72,6 +71,7 @@ class Item {
   }
 }
 
+// Parse input text
 function createMonkeys(lines) {
   const monkeys = [];
   let currentMonkey = null;
@@ -98,7 +98,7 @@ function createMonkeys(lines) {
       case "Operation:": {
         const [_, op] = line.split("=");
         const opTokens = words(op.trim());
-        currentMonkey.setOp(...opTokens);
+        currentMonkey.setOperation(...opTokens);
         break;
       }
       case "Test:": {
@@ -121,6 +121,7 @@ function createMonkeys(lines) {
   return monkeys;
 }
 
+// Link monkeys together
 function makeMonkeyTroop(monkeys) {
   for (const monkeyA of monkeys) {
     for (const monkeyB of monkeys) {
@@ -131,21 +132,29 @@ function makeMonkeyTroop(monkeys) {
   return monkeys;
 }
 
+function chaseMonkeys(input, times) {
+  // Setup / parse input
+  let rounds = times;
+  const monkeys = makeMonkeyTroop(createMonkeys(fromLines(input).map(trim)));
+  const worryLevelVal = IS_PART_1
+    ? 3
+    : // Find a modulo value that will work
+      // for all the monkeys' test values
+      TESTS.reduce((p, n) => p * n, 1);
+
+  // Run rounds
+  while (--rounds >= 0) doRound(monkeys, worryLevelVal);
+
+  // Find answer
+  const itemsInspected = monkeys.map((monkey) => monkey.itemsInspected);
+  // Get the 2 highest values: sort, then pop twice.
+  return itemsInspected.sort((a, b) => a - b).pop() * itemsInspected.pop();
+}
+
 function doRound(monkeys, worryLevelVal) {
   for (const monkey of monkeys) {
     monkey.doTurn(worryLevelVal);
   }
-}
-
-function chaseMonkeys(input, times) {
-  const monkeys = makeMonkeyTroop(createMonkeys(fromLines(input).map(trim)));
-  const worryLevelVal = IS_PART_1 ? 3 : TESTS.reduce((p, n) => p * n, 1);
-
-  let rounds = times;
-  while (--rounds >= 0) doRound(monkeys, worryLevelVal);
-
-  const itemsInspected = monkeys.map((monkey) => monkey.itemsInspected);
-  return itemsInspected.sort((a, b) => a - b).pop() * itemsInspected.pop();
 }
 
 // pt1 example 10605
